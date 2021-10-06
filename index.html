@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Yehezkiel Owen Ombuh">
   <title>StudentListApp | VanillaJS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
@@ -15,9 +17,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand text-light" href="#">Student Management</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -39,43 +41,183 @@
     </nav>
   </header>
 
-  <div class="container">
-    <h1 class="text-primary fw-light text-sm-start text-lg-center">Student Management <br>
-      <span class="text-secondary">MiniApp</span></h1>
+  <div class="container" style="padding: 60px 15px 0;">
+    <h1 class="text-dark fw-light text-md-start text-center">Student Management <br>
+      MiniApp</h1>
+    <hr>
   </div>
-
-  <hr>
-
   <div class="container">
     <div class="row">
       <div class="col-md-8">
         <h5>Add Student</h5>
         <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#addStudent"
           aria-expanded="false" aria-controls="addStudent">Show Form Add new Student</button>
+        <div class="collapse" id="addStudent">
+          <form action="#">
+            <div class="mb-3">
+              <label for="NIM" class="form-label">Student ID (NIM)</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Full Name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Gender</label>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="gender" id="male">
+                <label for="male" class="form-check-label">Male</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="gender" id="female">
+                <label for="female" class="form-check-label">Female</label>
+              </div>
+              <label for="Formfaculty">Faculty</label>
+              <div class="input-group md-3">
+                <select class="form-select" id="formFaculty">
+                  <option selected>-- SELECT FACULTY --</option>
+                  <option value="ASMIK">Akademi Sekretari Manajemen Indonesia Klabat</option>
+                  <option value="FEB">Fakultas Ekonomi dan Bisnis</option>
+                  <option value="FIL">Fakultas Filsafat</option>
+                  <option value="FIK">Fakultas Ilmu Komputer</option>
+                  <option value="FKIP">Fakultas Keguruan dan Ilmu Pendidikan</option>
+                  <option value="FKEP">Fakultas Keperawatan</option>
+                  <option value="FP">Fakultas Pertanian</option>
+                  <option value="PASCA">Pascasarjana</option>
+                </select>
+              </div>
+              <label for="formProgramOfStudy">Program of Study</label>
+              <div class="input-group md-3">
+                <select class="form-select" id="formProgramOfStudy">
+                  <option selected>-- SELECT PROGRAM OF STUDY --</option>
+                  <option class="FP" value="Agroteknologi">Agroteknologi</option>
+                  <option class="FEB" value="Akuntansi">Akuntansi</option>
+                  <option class="FIL" value="Ilmu Filsafat">Ilmu Filsafat</option>
+                  <option class="FIK" value="Informatika">Informatika</option>
+                  <option class="FKEP" value="Keperawatan">Keperawatan</option>
+                  <option class="PASCA" value="Magister Manajemen">Magister Manajemen</option>
+                  <option class="PASCA" value="Magister Teologi">Magister Teologi</option>
+                  <option class="FEB" value="Manajemen">Manajemen</option>
+                  <option class="FKIP" value="Pendidikan Agama">Pendidikan Agama</option>
+                  <option class="FKIP" value="Pendidikan Bahasa Inggris">Pendidikan Bahasa Inggris</option>
+                  <option class="FKIP" value="Pendidikan Ekonomi">Pendidikan Ekonomi</option>
+                  <option class="FKIP" value="Pendidikan Luar Sekolah">Pendidikan Luar Sekolah</option>
+                  <option class="FKEP" value="Ners">Profesi Ners</option>
+                  <option class="ASMIK" value="Sekretari">Sekretari (D3)</option>
+                  <option class="FIK" value="Sistem Informasi">Sistem Informasi</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-dark w-100">Add Student</button>
+          </form>
+          <hr class="d-md-none">
+        </div>
       </div>
-      <div class="collapse" id="addStudent">
-        <h6>Test</h6>
-      </div>
+
       <div class="col-md-4">
         <h5>Filter Students By</h5>
-        <label for="selectionFaculty">Faculty</label>
-        <br>
-        <div class="input-group md-3 h-25">
+        <label for="faculty">Faculty</label>
+        <div class="input-group md-3">
           <select class="form-select" id="selectionFaculty">
-            <option value="0" selected>-- SELECT FACULTY --</option>
-            <option value="ASMI">Akademi Sekretari Manajemen Indonesia Klabat</option>
+            <option selected>-- SELECT FACULTY --</option>
+            <option value="ASMIK">Akademi Sekretari Manajemen Indonesia Klabat</option>
             <option value="FEB">Fakultas Ekonomi dan Bisnis</option>
-            <option value="Filsafat">Fakultas Filsafat</option>
-            <option value="FKIP">Fakultas Keguruan dan Ilmu Pendidikan</option>
-            <option value="Keperawatan">Fakultas Keperawatan</option>
+            <option value="FIL">Fakultas Filsafat</option>
             <option value="FIK">Fakultas Ilmu Komputer</option>
-            <option value="Pertanian">Fakultas Pertanian</option>
-            <option value="Pascasarjana">Pascasarjana</option>
+            <option value="FKIP">Fakultas Keguruan dan Ilmu Pendidikan</option>
+            <option value="FKEP">Fakultas Keperawatan</option>
+            <option value="FP">Fakultas Pertanian</option>
+            <option value="PASCA">Pascasarjana</option>
           </select>
+          <button type="button" class="btn btn-dark w-100 my-3">Show Students</button>
+        </div>
+        <label for="selectionProgramOfStudy">Program of Study</label>
+        <div class="input-group md-3">
+          <select class="form-select" id="selectionProgramOfStudy">
+            <option selected>-- SELECT PROGRAM OF STUDY --</option>
+            <option class="FP" value="Agroteknologi">Agroteknologi</option>
+            <option class="FEB" value="Akuntansi">Akuntansi</option>
+            <option class="FIL" value="Ilmu Filsafat">Ilmu Filsafat</option>
+            <option class="FIK" value="Informatika">Informatika</option>
+            <option class="FKEP" value="Keperawatan">Keperawatan</option>
+            <option class="PASCA" value="Magister Manajemen">Magister Manajemen</option>
+            <option class="PASCA" value="Magister Teologi">Magister Teologi</option>
+            <option class="FEB" value="Manajemen">Manajemen</option>
+            <option class="FKIP" value="Pendidikan Agama">Pendidikan Agama</option>
+            <option class="FKIP" value="Pendidikan Bahasa Inggris">Pendidikan Bahasa Inggris</option>
+            <option class="FKIP" value="Pendidikan Ekonomi">Pendidikan Ekonomi</option>
+            <option class="FKIP" value="Pendidikan Luar Sekolah">Pendidikan Luar Sekolah</option>
+            <option class="FKEP" value="Ners">Profesi Ners</option>
+            <option class="ASMIK" value="Sekretari">Sekretari (D3)</option>
+            <option class="FIK" value="Sistem Informasi">Sistem Informasi</option>
+          </select>
+          <button type="button" class="btn btn-dark w-100 my-3">Show Students</button>
         </div>
       </div>
     </div>
+    <hr>
+    <div class="container">
+      <h1 class="text-dark fw-light text-center">Our Students</h1>
+      <div class="input-group flex-nowrap">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+        <input type="text" class="form-control" placeholder="Search Student by name...">
+      </div>
+      <br>
+      <div class="container">
+        <table class="table table-striped">
+          <thead class="bg-dark text-light">
+            <tr>
+              <th>Student ID (NIM)</th>
+              <th>Full Name</th>
+              <th>Gender</th>
+              <th>Faculty</th>
+              <th>Program of Study</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
+  <footer class="footer mt-auto py-3 bg-dark d-flex flex-wrap justify-content-evenly align-content-center">
+    <div class="col-md-3 d-flex align-items-center">
+      <span class="text-muted">&copy; Yehezkiel Owen Ombuh</span>
+    </div>
+
+    <ul class="nav col-md-3 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-muted" href="https://github.com/Sitouxz"><i class="bi bi-github"></i></a></li>
+      <li class="ms-3"><a class="text-muted" href="https://www.facebook.com/YehezkielOO"><i
+            class="bi bi-instagram"></i></a></li>
+      <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/sitouxz/"><i
+            class="bi bi-facebook"></i></a></li>
+    </ul>
+  </footer>
 </body>
 
 </html>
