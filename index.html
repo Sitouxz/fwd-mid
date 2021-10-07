@@ -54,62 +54,49 @@
           aria-expanded="false" aria-controls="addStudent" id="showBtn" onclick="showHide()">Show Form Add New
           Student</button>
         <div class="collapse" id="addStudent">
-          <form action="#">
+          <form class="needs-validation" id="studentForm" novalidate>
             <div class="mb-3">
-              <label for="NIM" class="form-label">Student ID (NIM)</label>
-              <input type="text" class="form-control">
+              <label for="nim" class="form-label">Student ID (NIM)</label>
+              <input type="text" class="form-control" name="nim" placeholder="105021810001" required>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">NIM cannot be empty</div>
             </div>
             <div class="mb-3">
               <label for="fullName" class="form-label">Full Name</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" name="fullName" placeholder="John Doe" required>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Name cannot be empty</div>
             </div>
             <div class="mb-3">
               <label for="gender" class="form-label">Gender</label>
               <div class="form-check">
-                <input type="radio" class="form-check-input" name="gender" id="male">
+                <input type="radio" class="form-check-input" name="gender" id="male" required>
                 <label for="male" class="form-check-label">Male</label>
               </div>
               <div class="form-check">
-                <input type="radio" class="form-check-input" name="gender" id="female">
+                <input type="radio" class="form-check-input" name="gender" id="female" required>
                 <label for="female" class="form-check-label">Female</label>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">You have to choose gender</div>
               </div>
               <label for="Formfaculty">Faculty</label>
               <div class="input-group md-3">
-                <select class="form-select" id="formFaculty">
-                  <option selected>-- SELECT FACULTY --</option>
-                  <option value="ASMIK">Akademi Sekretari Manajemen Indonesia Klabat</option>
-                  <option value="FEB">Fakultas Ekonomi dan Bisnis</option>
-                  <option value="FIL">Fakultas Filsafat</option>
-                  <option value="FIK">Fakultas Ilmu Komputer</option>
-                  <option value="FKIP">Fakultas Keguruan dan Ilmu Pendidikan</option>
-                  <option value="FKEP">Fakultas Keperawatan</option>
-                  <option value="FP">Fakultas Pertanian</option>
-                  <option value="PASCA">Pascasarjana</option>
+                <select class="form-select" id="formFaculty" required>
+                  <option value="" selected disabled>-- SELECT FACULTY --</option>
                 </select>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Select Faculty</div>
               </div>
               <label for="formProgramOfStudy">Program of Study</label>
               <div class="input-group md-3">
-                <select class="form-select" id="formProgramOfStudy">
-                  <option selected>-- SELECT PROGRAM OF STUDY --</option>
-                  <option class="FP" value="Agroteknologi">Agroteknologi</option>
-                  <option class="FEB" value="Akuntansi">Akuntansi</option>
-                  <option class="FIL" value="Ilmu Filsafat">Ilmu Filsafat</option>
-                  <option class="FIK" value="Informatika">Informatika</option>
-                  <option class="FKEP" value="Keperawatan">Keperawatan</option>
-                  <option class="PASCA" value="Magister Manajemen">Magister Manajemen</option>
-                  <option class="PASCA" value="Magister Teologi">Magister Teologi</option>
-                  <option class="FEB" value="Manajemen">Manajemen</option>
-                  <option class="FKIP" value="Pendidikan Agama">Pendidikan Agama</option>
-                  <option class="FKIP" value="Pendidikan Bahasa Inggris">Pendidikan Bahasa Inggris</option>
-                  <option class="FKIP" value="Pendidikan Ekonomi">Pendidikan Ekonomi</option>
-                  <option class="FKIP" value="Pendidikan Luar Sekolah">Pendidikan Luar Sekolah</option>
-                  <option class="FKEP" value="Ners">Profesi Ners</option>
-                  <option class="ASMIK" value="Sekretari">Sekretari (D3)</option>
-                  <option class="FIK" value="Sistem Informasi">Sistem Informasi</option>
+                <select class="form-select" id="formProgramOfStudy" required>
+                  <option value="" selected disabled>-- SELECT PROGRAM OF STUDY --</option>
                 </select>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Select program of study</div>
               </div>
             </div>
-            <button type="submit" class="btn btn-dark w-100">Add Student</button>
+            <button type="submit" class="btn btn-dark w-100" id="formSubmit">Add Student</button>
           </form>
           <hr class="d-md-none">
         </div>
@@ -119,8 +106,8 @@
         <h5>Filter Students By</h5>
         <label for="faculty">Faculty</label>
         <div class="input-group md-3">
-          <select class="form-select" id="selectionFaculty">
-            <option selected>-- SELECT FACULTY --</option>
+          <select class="form-select" name="selectionFaculty" id="selectionFaculty">
+            <option disabled selected>-- SELECT FACULTY --</option>
             <option value="ASMIK">Akademi Sekretari Manajemen Indonesia Klabat</option>
             <option value="FEB">Fakultas Ekonomi dan Bisnis</option>
             <option value="FIL">Fakultas Filsafat</option>
@@ -134,8 +121,8 @@
         </div>
         <label for="selectionProgramOfStudy">Program of Study</label>
         <div class="input-group md-3">
-          <select class="form-select" id="selectionProgramOfStudy">
-            <option selected>-- SELECT PROGRAM OF STUDY --</option>
+          <select class="form-select" name="selectionProgramOfStudy" id="selectionProgramOfStudy">
+            <option disabled selected>-- SELECT PROGRAM OF STUDY --</option>
             <option class="FP" value="Agroteknologi">Agroteknologi</option>
             <option class="FEB" value="Akuntansi">Akuntansi</option>
             <option class="FIL" value="Ilmu Filsafat">Ilmu Filsafat</option>
@@ -176,31 +163,7 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
+          <tbody id="studentsTable">
           </tbody>
         </table>
       </div>
