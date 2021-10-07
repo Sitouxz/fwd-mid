@@ -91,24 +91,40 @@ const inputNim = document.querySelector('input[name="nim"]');
 const inputFullName = document.querySelector('input[name="fullName"]');
 const inputFemale = document.querySelector('input#male');
 const inputMale = document.querySelector('input#female');
-let inputGender = '';
+// let inputGender = '';
 
-if (inputFemale.checked == true) {
-    inputGender = 'Female';
-} else if (inputMale.checked = true) {
-    inputGender = 'Male';
-}
+// if (inputFemale.checked == true) {
+//     inputGender = 'Female';
+// } else {
+//     inputGender = 'Male';
+// }
 const inputFormFaculty = document.querySelector('select#formFaculty');
 const inputFormProgramOfStudy = document.querySelector('select#formProgramOfStudy');
+// const newStudent = {
+//     nim: inputNim,
+//     fullname: inputFullName,
+//     gender: inputGender,
+//     faculty: inputFormFaculty,
+//     programOfStudy: inputFormProgramOfStudy
+// }
 
 const formSubmit = document.querySelector('#formSubmit');
 
 const addStudent = () => {
     const nim = inputNim.value;
     const fullName = inputFullName.value;
-    const gender = inputGender;
     const formFaculty = inputFormFaculty.value;
     const formProgramOfStudy = inputFormProgramOfStudy.value;
+    let inputGender = '';
+
+    if (inputFemale.checked == true) {
+        inputGender = 'Male';
+    } else {
+        inputGender = 'Female';
+    }
+    const gender = inputGender;
+
+
     const newStudent = {
         nim: nim,
         fullName: fullName,
