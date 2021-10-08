@@ -26,7 +26,7 @@ function showHide() {
                 form.classList.add('was-validated')
             }, false)
         })
-})()
+});
 
 // Source: https://www.w3schools.com/howto/howto_js_cascading_dropdown.asp
 
@@ -66,7 +66,7 @@ let students = [{
         nim: 105011810001,
         fullName: 'John Doe',
         gender: 'Male',
-        faculty: 'FIK',
+        faculty: 'Fakultas Ilmu Komputer',
         programOfStudy: 'Sistem Informasi'
     },
     {
@@ -74,7 +74,7 @@ let students = [{
         nim: 103021810001,
         fullName: 'Jack Reacher',
         gender: 'Male',
-        faculty: 'FEB',
+        faculty: 'Fakultas Ekonomi dan Bisnis',
         programOfStudy: 'Manajemen'
     },
     {
@@ -82,7 +82,7 @@ let students = [{
         nim: 105021810003,
         fullName: 'Mery Heather',
         gender: 'Female',
-        faculty: 'FIK',
+        faculty: 'Fakultas Ilmu Komputer',
         programOfStudy: 'Informatika'
     }
 ]
@@ -159,18 +159,86 @@ const renderData = () => {
         let nim = row.insertCell(0);
         nim.innerHTML = student.nim;
         let fullName = row.insertCell(1);
+        fullName.className = 'fullName';
         fullName.innerHTML = student.fullName;
         let gender = row.insertCell(2);
         gender.innerHTML = student.gender;
         let faculty = row.insertCell(3);
+        faculty.className = 'faculty';
         faculty.innerHTML = student.faculty;
         let programOfStudy = row.insertCell(4);
+        programOfStudy.className = 'programOfStudy';
         programOfStudy.innerHTML = student.programOfStudy;
         let action = row.insertCell(5);
         action.innerHTML = '<button class="btn btn-danger" onclick="deleteStudent(this);"><i class="bi bi-trash-fill"></i></button>';
     }
 }
 
+function filterFaculty() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("selectionFaculty");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("studentsTable");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("faculty")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText || td.value;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+function filterProgramOfStudy() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("selectionProgramOfStudy");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("studentsTable");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("programOfStudy")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText || td.value;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+function searchName() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("studentsTable");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("fullName")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText || td.value;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+// var e = document.getElementById('selectionFaculty');
+// var strE = e.options[e.selectedIndex].text;
+// console.log(strE);
+
+// Pre rendered function & data
 renderData();
 formSubmit.addEventListener('click', addStudent);
 

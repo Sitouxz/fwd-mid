@@ -117,7 +117,7 @@
             <option>Fakultas Pertanian</option>
             <option>Pascasarjana</option>
           </select>
-          <button type="button" class="btn btn-dark w-100 my-3">Show Students</button>
+          <button type="button" class="btn btn-dark w-100 my-3" onclick="filterFaculty()">Show Students</button>
         </div>
         <label for="selectionProgramOfStudy">Program of Study</label>
         <div class="input-group md-3">
@@ -139,7 +139,7 @@
             <option>Sekretari (D3)</option>
             <option>Sistem Informasi</option>
           </select>
-          <button type="button" class="btn btn-dark w-100 my-3">Show Students</button>
+          <button type="button" class="btn btn-dark w-100 my-3" onclick="filterProgramOfStudy()">Show Students</button>
         </div>
       </div>
     </div>
@@ -148,7 +148,8 @@
       <h1 class="text-dark fw-light text-center">Our Students</h1>
       <div class="input-group flex-nowrap">
         <span class="input-group-text"><i class="bi bi-search"></i></span>
-        <input type="text" class="form-control" placeholder="Search Student by name...">
+        <input type="text" class="form-control" id="searchInput" onkeyup="searchName()"
+          placeholder="Search Student by name...">
       </div>
       <br>
       <div class="container">
