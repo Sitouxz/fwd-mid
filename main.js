@@ -117,6 +117,14 @@ const addStudent = () => {
     }
     const gender = inputGender;
 
+    if (students.map((s) => s.nim).includes(nim) == true) {
+        duplicateModal = document.getElementById("duplicateAlert");
+        var duplicateModal = new bootstrap.Modal(document.getElementById('duplicateAlert'))
+        duplicateModal.show()
+        document.getElementById("studentForm").reset();
+        return;
+    }
+
     if (nim == '' || fullName == '' || formFaculty == '' || formProgramOfStudy == '') {
 
         return;
@@ -134,8 +142,16 @@ const addStudent = () => {
     renderData();
     var addToast = document.getElementById('addToast')
     var toast = new bootstrap.Toast(addToast)
-
-    toast.show()
+    toast.show();
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log('Student Added');
+            document.getElementById("studentForm").reset();
+            reset = document.getElementById("studentForm");
+            reset.className = "needs-validation";
+            resolve();
+        });
+    });
 }
 // End of (Send data to Student Database)
 
