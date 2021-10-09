@@ -70,7 +70,7 @@ let students = [{
         nim: 105011810001,
         fullName: 'John Doe',
         gender: 'Male',
-        faculty: 'Fakultas Ilmu Komputer',
+        faculty: 'FIK',
         programOfStudy: 'Sistem Informasi'
     },
     {
@@ -78,7 +78,7 @@ let students = [{
         nim: 103021810001,
         fullName: 'Jack Reacher',
         gender: 'Male',
-        faculty: 'Fakultas Ekonomi dan Bisnis',
+        faculty: 'FEB',
         programOfStudy: 'Manajemen'
     },
     {
@@ -86,7 +86,7 @@ let students = [{
         nim: 105021810003,
         fullName: 'Mery Heather',
         gender: 'Female',
-        faculty: 'Fakultas Ilmu Komputer',
+        faculty: 'FIK',
         programOfStudy: 'Informatika'
     }
 ]
@@ -106,7 +106,7 @@ const formSubmit = document.querySelector('#formSubmit');
 const addStudent = () => {
     const nim = inputNim.value;
     const fullName = inputFullName.value;
-    const formFaculty = inputFormFaculty.value;
+    let formFaculty = inputFormFaculty.value;
     const formProgramOfStudy = inputFormProgramOfStudy.value;
     let inputGender = '';
 
@@ -123,6 +123,31 @@ const addStudent = () => {
         duplicateModal.show()
         document.getElementById("studentForm").reset();
         return;
+    }
+
+    if (formFaculty == 'Akademi Sekretari Manajemen Indonesia Klabat') {
+        formFaculty = 'ASMIK';
+    }
+    if (formFaculty == 'Fakultas Ekonomi dan Bisnis') {
+        formFaculty = 'FEB';
+    }
+    if (formFaculty == 'Fakultas Filsafat') {
+        formFaculty = 'FIL';
+    }
+    if (formFaculty == 'Fakultas Ilmu Komputer') {
+        formFaculty = 'FIK';
+    }
+    if (formFaculty == 'Fakultas Keguruan dan Ilmu Pendidikan') {
+        formFaculty = 'FKIP';
+    }
+    if (formFaculty == 'Fakultas Keperawatan') {
+        formFaculty = 'FKEP';
+    }
+    if (formFaculty == 'Fakultas Pertanian') {
+        formFaculty = 'PERTANIAN';
+    }
+    if (formFaculty == 'Pascasarjana') {
+        formFaculty = 'PASCASARJANA';
     }
 
     if (nim == '' || fullName == '' || formFaculty == '' || formProgramOfStudy == '') {
