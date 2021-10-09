@@ -1,6 +1,6 @@
 // Made by Yehezkiel Owen Ombuh
 // with help from Docs, StackOverflow, W3school and other website
-// ===========
+// ===============================================================
 
 // Add Student Button Text Change
 function showHide() {

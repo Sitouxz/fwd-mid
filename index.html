@@ -1,3 +1,8 @@
+<!-- Made by Yehezkiel Owen Ombuh -->
+<!-- with help from Docs, StackOverflow, W3school and other website -->
+<!-- =============================================================== -->
+
+<!-- Define HTML -->
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 
@@ -7,6 +12,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Yehezkiel Owen Ombuh">
   <title>StudentListApp | VanillaJS</title>
+
+  <!-- Link to bootstrap and icon library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,9 +24,14 @@
   </script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <!-- End of(Link to bootstrap and icon library) -->
 </head>
+<!-- End of (Define HTML)-->
+
 
 <body class="d-flex flex-column h-100">
+
+  <!-- Header navbar -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
@@ -42,73 +54,123 @@
       </div>
     </nav>
   </header>
+  <!-- End of (Header navbar) -->
 
+  <!-- Title -->
   <div class="container" style="padding: 60px 15px 0;">
     <h1 class="text-dark fw-light text-md-start text-center">Student Management <br>
       MiniApp</h1>
     <hr>
   </div>
+  <!-- End of (title) -->
+
+  <!-- Main Content -->
   <div class="container">
     <div class="row">
       <div class="col-md-8">
         <h5>Add Student</h5>
+        <!-- Student form button -->
         <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#addStudent"
           aria-expanded="false" aria-controls="addStudent" id="showBtn" onclick="showHide()"><i
             class="bi bi-caret-down-fill"></i> Show Form Add New
           Student</button>
+        <!-- End of (Student form button) -->
+
+        <!-- Add Student Form -->
         <div class="collapse" id="addStudent">
           <form class="needs-validation" id="studentForm" novalidate>
+            <!-- NIM input -->
             <div class="mb-3">
               <label for="nim" class="form-label">Student ID (NIM)</label>
               <input type="text" class="form-control" name="nim" placeholder="105021810001" required>
+              <!-- NIM validation -->
               <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">NIM cannot be empty</div>
+              <!-- End of (NIM validation) -->
             </div>
+            <!-- End of (NIM input) -->
+
+            <!-- Name input -->
             <div class="mb-3">
               <label for="fullName" class="form-label">Full Name</label>
               <input type="text" class="form-control" name="fullName" placeholder="John Doe" required>
+              <!-- Name validation -->
               <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">Name cannot be empty</div>
+              <!-- End of (Name validation) -->
             </div>
+            <!-- End of Name input -->
+
+            <!-- Gender input -->
             <div class="mb-3">
               <label for="gender" class="form-label">Gender</label>
+
               <div class="form-check">
+                <!-- Male input -->
                 <input type="radio" class="form-check-input" name="gender" id="male" required>
                 <label for="male" class="form-check-label">Male</label>
+                <!-- End of (Male input) -->
               </div>
+
               <div class="form-check">
+                <!-- Female input -->
                 <input type="radio" class="form-check-input" name="gender" id="female" required>
                 <label for="female" class="form-check-label">Female</label>
+                <!-- End of (Female input) -->
+
+                <!-- Gender validation -->
                 <div class="valid-feedback">Looks good!</div>
                 <div class="invalid-feedback">You have to choose gender</div>
+                <!-- End of (Gender validation) -->
               </div>
+            </div>
+            <!-- End of Gender input -->
+
+            <!-- Faculty input -->
+            <div class="mb-3">
               <label for="Formfaculty">Faculty</label>
               <div class="input-group md-3">
                 <select class="form-select" id="formFaculty" required>
                   <option value="" selected disabled>-- SELECT FACULTY --</option>
                 </select>
+                <!-- Faculty validation -->
                 <div class="valid-feedback">Looks good!</div>
                 <div class="invalid-feedback">Select Faculty</div>
+                <!-- End of (Faculty validation) -->
               </div>
+            </div>
+            <!-- End of (Faculty input) -->
+
+            <!-- Program of study input -->
+            <div class="mb-3">
               <label for="formProgramOfStudy">Program of Study</label>
               <div class="input-group md-3">
                 <select class="form-select" id="formProgramOfStudy" required>
                   <option value="" selected disabled>-- SELECT PROGRAM OF STUDY --</option>
                 </select>
+                <!-- Program of study validation -->
                 <div class="valid-feedback">Looks good!</div>
                 <div class="invalid-feedback">Select program of study</div>
+                <!-- End of (Program of study validation) -->
               </div>
             </div>
+            <!-- End of (Program of study input) -->
+
+            <!-- Submit button -->
             <button type="submit" class="btn btn-dark w-100" id="formSubmit"><i class="bi bi-person-plus-fill fs-5"></i>
               Add
               Student</button>
+            <!-- End of (Submit Button) -->
           </form>
           <hr class="d-md-none">
         </div>
       </div>
+      <!-- End of (Add Student Form) -->
 
+      <!-- Filter student -->
       <div class="col-md-4">
         <h5>Filter Students By</h5>
+        <!-- Filter by faculty -->
         <label for="faculty">Faculty</label>
         <div class="input-group md-3">
           <select class="form-select" name="selectionFaculty" id="selectionFaculty">
@@ -124,6 +186,9 @@
           </select>
           <button type="button" class="btn btn-dark w-100 my-3" onclick="filterFaculty()">Show Students</button>
         </div>
+        <!-- End of (Filter by faculty) -->
+
+        <!-- Filter by program of study -->
         <label for="selectionProgramOfStudy">Program of Study</label>
         <div class="input-group md-3">
           <select class="form-select" name="selectionProgramOfStudy" id="selectionProgramOfStudy">
@@ -146,23 +211,34 @@
           </select>
           <button type="button" class="btn btn-dark w-100 my-3" onclick="filterProgramOfStudy()">Show Students</button>
         </div>
+        <!-- End of (Filter by program of study) -->
+
+        <!-- Reload button -->
         <button class="btn btn-primary" onclick="renderData()"><i class="fa fa-refresh" aria-hidden="true"></i>
           Reload</button>
+        <!-- End of (Reload Button) -->
       </div>
+      <!-- End of (Filter student) -->
     </div>
 
-    <hr>
+    <hr> <!-- Line Divider -->
 
     <div class="container">
+      <!-- Table Title -->
       <h1 class="text-dark fw-light text-center">Our Students</h1>
+      <!-- End of (table title) -->
+
+      <!-- Search bar -->
       <div class="input-group flex-nowrap">
         <span class="input-group-text"><i class="bi bi-search"></i></span>
         <input type="text" class="form-control" id="searchInput" onkeyup="searchName()"
           placeholder="Search Student by name...">
       </div>
+      <!-- End of (search bar) -->
 
-      <br>
+      <br> <!-- Separator -->
 
+      <!-- Student Table -->
       <div class="container">
         <table class="table table-striped">
           <thead class="bg-dark text-light">
@@ -179,9 +255,12 @@
           </tbody>
         </table>
       </div>
+      <!-- End of (Table) -->
     </div>
   </div>
+  <!-- End of (Main content) -->
 
+  <!-- Footer -->
   <footer class="footer mt-auto py-3 bg-dark d-flex flex-wrap justify-content-evenly align-content-center">
     <div class="col-md-3 d-flex align-items-center">
       <span class="text-muted">&copy; Yehezkiel Owen Ombuh</span>
@@ -195,7 +274,9 @@
             class="bi bi-facebook"></i></a></li>
     </ul>
   </footer>
+  <!-- End of (Footer) -->
 
+  <!-- Modal -->
   <div class="modal fade" id="deleteAlert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -214,7 +295,9 @@
       </div>
     </div>
   </div>
+  <!-- End of (Modal) -->
 
+  <!-- Toast -->
   <div class="toast-container position-fixed bottom-0 end-0 m-3" style="z-index: 11">
     <div class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive"
       aria-atomic="true" id="deleteToast">
@@ -237,8 +320,11 @@
       </div>
     </div>
   </div>
+  <!-- End of (Toast) -->
 
+  <!-- Link to local javascript -->
   <script src="main.js"></script>
+  <!-- End of (Link to local javascript) -->
 </body>
 
 </html>
