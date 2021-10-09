@@ -5,10 +5,10 @@
 // Add Student Button Text Change
 function showHide() {
     const btn = document.getElementById('showBtn');
-    if (btn.innerHTML == 'Hide Form Add New Student') {
-        btn.innerHTML = 'Show Form Add New Student';
+    if (btn.innerHTML == '<i class="bi bi-caret-up-fill"></i> Hide Form Add New Student') {
+        btn.innerHTML = '<i class="bi bi-caret-down-fill"></i> Show Form Add New Student';
     } else {
-        btn.innerHTML = 'Hide Form Add New Student';
+        btn.innerHTML = '<i class="bi bi-caret-up-fill"></i> Hide Form Add New Student';
     }
 }
 // End of (Add Student Button Text Change)
